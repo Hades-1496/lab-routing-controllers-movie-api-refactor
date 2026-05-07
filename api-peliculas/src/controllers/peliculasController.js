@@ -34,7 +34,6 @@ const crearPelicula = (req, res) => {
   }
 
   const nuevaPelicula = db.create({
-    id: nextId++,
     titulo,
     director,
     anio: Number(anio),
@@ -85,7 +84,7 @@ const listarResenias = (req,res) => {
     const pelicula = db.getById(peliculaId);
 
     if (!pelicula) return res.status(404).json({ error: 'Película no encontrda'});
-    const resenias = db.getResenias(peliculaid);
+    const resenias = db.getResenias(peliculaId);
     res.json({ pelicula: pelicula.titulo, resenias});
 }
 const crearResenias = (req, res) => {
